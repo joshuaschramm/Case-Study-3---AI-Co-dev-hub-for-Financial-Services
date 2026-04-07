@@ -1,0 +1,98 @@
+[
+  {
+    "id": "model-1",
+    "name": "Sentinel Fraud v3.2",
+    "product": "Sentinel Fraud Detection",
+    "version": "3.2",
+    "framework": "PyTorch",
+    "accuracy": 96.3,
+    "latency": 112,
+    "status": "Active",
+    "environment": "Production",
+    "lastTrained": "2026-04-05T12:00:00Z"
+  },
+  {
+    "id": "model-2",
+    "name": "Athena Insights v2.0",
+    "product": "Athena Insights",
+    "version": "2.0",
+    "framework": "TensorFlow",
+    "accuracy": 91.8,
+    "latency": 128,
+    "status": "Active",
+    "environment": "Staging",
+    "lastTrained": "2026-04-04T10:00:00Z"
+  },
+  {
+    "id": "model-3",
+    "name": "DocuMind Classifier v4.0",
+    "product": "DocuMind Processor",
+    "version": "4.0",
+    "framework": "scikit-learn",
+    "accuracy": 93.8,
+    "latency": 140,
+    "status": "Active",
+    "environment": "Production",
+    "lastTrained": "2026-04-03T09:00:00Z"
+  },
+  {
+    "id": "model-4",
+    "name": "Pulse Sentiment v2.1",
+    "product": "Pulse Sentiment",
+    "version": "2.1",
+    "framework": "PyTorch",
+    "accuracy": 91.8,
+    "latency": 135,
+    "status": "Training",
+    "environment": "Development",
+    "lastTrained": "2026-04-02T16:00:00Z"
+  },
+  {
+    "id": "model-5",
+    "name": "Guardian Risk v1.8",
+    "product": "Guardian Risk Assessment",
+    "version": "1.8",
+    "framework": "TensorFlow",
+    "accuracy": 92.5,
+    "latency": 120,
+    "status": "Active",
+    "environment": "Production",
+    "lastTrained": "2026-04-01T13:00:00Z"
+  },
+  {
+    "id": "model-6",
+    "name": "Nexus Core v1.0",
+    "product": "Nexus Platform",
+    "version": "1.0",
+    "framework": "ONNX",
+    "accuracy": 90.2,
+    "latency": 98,
+    "status": "Active",
+    "environment": "Production",
+    "lastTrained": "2026-03-31T11:00:00Z"
+  },
+  {
+    "id": "model-7",
+    "name": "Compliance Checker v2.3",
+    "product": "Compliance Monitor",
+    "version": "2.3",
+    "framework": "scikit-learn",
+    "accuracy": 89.7,
+    "latency": 130,
+    "status": "Active",
+    "environment": "Staging",
+    "lastTrained": "2026-03-29T08:00:00Z"
+  },
+  {
+    "id": "model-8",
+    "name": "Revenue Optimizer v1.0",
+    "product": "Revenue Optimizer",
+    "version": "1.0",
+    "framework": "PyTorch",
+    "accuracy": 88.5,
+    "latency": 150,
+    "status": "Active",
+    "environment": "Development",
+    "lastTrained": "2026-03-27T15:00:00Z"
+  }
+]

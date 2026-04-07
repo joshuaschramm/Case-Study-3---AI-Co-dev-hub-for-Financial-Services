@@ -1,0 +1,62 @@
+[
+  {
+    "id": "team-1",
+    "name": "Sentinel",
+    "focus": "Fraud Detection",
+    "members": 5,
+    "sprintPoints": { "completed": 18, "committed": 20 },
+    "completionRate": 90,
+    "deployments": 3,
+    "status": "On Track"
+  },
+  {
+    "id": "team-2",
+    "name": "Athena",
+    "focus": "Financial Insights",
+    "members": 4,
+    "sprintPoints": { "completed": 15, "committed": 18 },
+    "completionRate": 83,
+    "deployments": 2,
+    "status": "On Track"
+  },
+  {
+    "id": "team-3",
+    "name": "DocuMind",
+    "focus": "Document Processing",
+    "members": 4,
+    "sprintPoints": { "completed": 16, "committed": 18 },
+    "completionRate": 89,
+    "deployments": 2,
+    "status": "At Risk"
+  },
+  {
+    "id": "team-4",
+    "name": "Pulse",
+    "focus": "Customer Sentiment",
+    "members": 3,
+    "sprintPoints": { "completed": 12, "committed": 15 },
+    "completionRate": 80,
+    "deployments": 1,
+    "status": "On Track"
+  },
+  {
+    "id": "team-5",
+    "name": "Guardian",
+    "focus": "Risk Assessment",
+    "members": 5,
+    "sprintPoints": { "completed": 20, "committed": 22 },
+    "completionRate": 91,
+    "deployments": 4,
+    "status": "On Track"
+  },
+  {
+    "id": "team-6",
+    "name": "Nexus",
+    "focus": "Platform & Infrastructure",
+    "members": 5,
+    "sprintPoints": { "completed": 14, "committed": 16 },
+    "completionRate": 88,
+    "deployments": 2,
+    "status": "Behind"
+  }
+]

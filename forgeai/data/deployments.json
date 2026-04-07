@@ -1,0 +1,82 @@
+[
+  {
+    "id": "dep-1",
+    "product": "Sentinel Fraud Detection",
+    "version": "3.2",
+    "environment": "Production",
+    "triggeredBy": "Jordan Chen",
+    "startTime": "2026-04-06T09:00:00Z",
+    "duration": "14m",
+    "status": "Success"
+  },
+  {
+    "id": "dep-2",
+    "product": "Athena Insights",
+    "version": "2.0",
+    "environment": "Staging",
+    "triggeredBy": "Priya Patel",
+    "startTime": "2026-04-05T11:30:00Z",
+    "duration": "16m",
+    "status": "Success"
+  },
+  {
+    "id": "dep-3",
+    "product": "DocuMind Processor",
+    "version": "4.0",
+    "environment": "Production",
+    "triggeredBy": "Alex Kim",
+    "startTime": "2026-04-04T13:00:00Z",
+    "duration": "18m",
+    "status": "Failed"
+  },
+  {
+    "id": "dep-4",
+    "product": "Pulse Sentiment",
+    "version": "2.1",
+    "environment": "Development",
+    "triggeredBy": "Maria Lopez",
+    "startTime": "2026-04-03T15:00:00Z",
+    "duration": "20m",
+    "status": "In Progress"
+  },
+  {
+    "id": "dep-5",
+    "product": "Guardian Risk Assessment",
+    "version": "1.8",
+    "environment": "Production",
+    "triggeredBy": "Jordan Chen",
+    "startTime": "2026-04-02T10:00:00Z",
+    "duration": "13m",
+    "status": "Success"
+  },
+  {
+    "id": "dep-6",
+    "product": "Nexus Platform",
+    "version": "1.0",
+    "environment": "Production",
+    "triggeredBy": "Alex Kim",
+    "startTime": "2026-04-01T08:00:00Z",
+    "duration": "12m",
+    "status": "Rolled Back"
+  },
+  {
+    "id": "dep-7",
+    "product": "Compliance Monitor",
+    "version": "2.3",
+    "environment": "Staging",
+    "triggeredBy": "Priya Patel",
+    "startTime": "2026-03-30T14:00:00Z",
+    "duration": "15m",
+    "status": "Success"
+  },
+  {
+    "id": "dep-8",
+    "product": "Revenue Optimizer",
+    "version": "1.0",
+    "environment": "Development",
+    "triggeredBy": "Maria Lopez",
+    "startTime": "2026-03-28T16:00:00Z",
+    "duration": "19m",
+    "status": "Success"
+  }
+]

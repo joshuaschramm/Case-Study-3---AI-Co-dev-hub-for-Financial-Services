@@ -1,0 +1,134 @@
+[
+  {
+    "id": "comp-1",
+    "name": "Auth Module",
+    "description": "Reusable authentication and SSO integration.",
+    "category": "Auth & Security",
+    "version": "2.3.1",
+    "usedIn": 6,
+    "downloads": 120,
+    "stars": 18,
+    "maintainedBy": "Nexus"
+  },
+  {
+    "id": "comp-2",
+    "name": "Data Connector: Snowflake",
+    "description": "Connector for Snowflake data warehouse.",
+    "category": "Data Connectors",
+    "version": "1.7.0",
+    "usedIn": 4,
+    "downloads": 80,
+    "stars": 12,
+    "maintainedBy": "Athena"
+  },
+  {
+    "id": "comp-3",
+    "name": "ML Pipeline Template",
+    "description": "Standardized ML pipeline for model training.",
+    "category": "ML Pipelines",
+    "version": "3.0.2",
+    "usedIn": 5,
+    "downloads": 95,
+    "stars": 15,
+    "maintainedBy": "Sentinel"
+  },
+  {
+    "id": "comp-4",
+    "name": "API Template: Payments",
+    "description": "REST API template for payment processing.",
+    "category": "API Templates",
+    "version": "1.2.4",
+    "usedIn": 3,
+    "downloads": 60,
+    "stars": 10,
+    "maintainedBy": "Guardian"
+  },
+  {
+    "id": "comp-5",
+    "name": "UI Widget: KPI Card",
+    "description": "Glassmorphic KPI card for dashboards.",
+    "category": "UI Widgets",
+    "version": "1.0.0",
+    "usedIn": 8,
+    "downloads": 140,
+    "stars": 22,
+    "maintainedBy": "Pulse"
+  },
+  {
+    "id": "comp-6",
+    "name": "Monitoring Agent",
+    "description": "Agent for real-time system monitoring.",
+    "category": "Monitoring",
+    "version": "2.1.0",
+    "usedIn": 4,
+    "downloads": 75,
+    "stars": 13,
+    "maintainedBy": "Nexus"
+  },
+  {
+    "id": "comp-7",
+    "name": "Data Connector: S3",
+    "description": "Connector for AWS S3 buckets.",
+    "category": "Data Connectors",
+    "version": "1.5.2",
+    "usedIn": 3,
+    "downloads": 70,
+    "stars": 11,
+    "maintainedBy": "DocuMind"
+  },
+  {
+    "id": "comp-8",
+    "name": "ML Pipeline: FastTrain",
+    "description": "Optimized pipeline for rapid model training.",
+    "category": "ML Pipelines",
+    "version": "2.2.0",
+    "usedIn": 2,
+    "downloads": 50,
+    "stars": 8,
+    "maintainedBy": "Sentinel"
+  },
+  {
+    "id": "comp-9",
+    "name": "UI Widget: Chart Card",
+    "description": "Reusable chart card for analytics dashboards.",
+    "category": "UI Widgets",
+    "version": "1.1.0",
+    "usedIn": 7,
+    "downloads": 110,
+    "stars": 16,
+    "maintainedBy": "Pulse"
+  },
+  {
+    "id": "comp-10",
+    "name": "API Template: KYC",
+    "description": "REST API template for KYC workflows.",
+    "category": "API Templates",
+    "version": "1.0.3",
+    "usedIn": 2,
+    "downloads": 40,
+    "stars": 7,
+    "maintainedBy": "Guardian"
+  },
+  {
+    "id": "comp-11",
+    "name": "Monitoring Dashboard",
+    "description": "Dashboard for system health and alerts.",
+    "category": "Monitoring",
+    "version": "1.3.0",
+    "usedIn": 5,
+    "downloads": 90,
+    "stars": 14,
+    "maintainedBy": "Nexus"
+  },
+  {
+    "id": "comp-12",
+    "name": "Data Connector: Oracle",
+    "description": "Connector for Oracle databases.",
+    "category": "Data Connectors",
+    "version": "1.4.1",
+    "usedIn": 2,
+    "downloads": 30,
+    "stars": 5,
+    "maintainedBy": "Athena"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "block-1",
+    "severity": "Critical",
+    "description": "Production deployment blocked by failed integration tests.",
+    "team": "DocuMind",
+    "daysOpen": 2
+  },
+  {
+    "id": "block-2",
+    "severity": "High",
+    "description": "Data pipeline latency exceeding SLA.",
+    "team": "Nexus",
+    "daysOpen": 4
+  },
+  {
+    "id": "block-3",
+    "severity": "Medium",
+    "description": "Model retraining delayed due to resource contention.",
+    "team": "Sentinel",
+    "daysOpen": 3
+  },
+  {
+    "id": "block-4",
+    "severity": "High",
+    "description": "API error rate spike in staging environment.",
+    "team": "Athena",
+    "daysOpen": 1
+  },
+  {
+    "id": "block-5",
+    "severity": "Critical",
+    "description": "Security vulnerability detected in open-source dependency.",
+    "team": "Guardian",
+    "daysOpen": 5
+  }
+]

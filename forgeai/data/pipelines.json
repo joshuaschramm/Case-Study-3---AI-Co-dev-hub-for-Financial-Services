@@ -1,0 +1,72 @@
+[
+  {
+    "id": "pipe-1",
+    "name": "Fraud Detection Build",
+    "type": "CI/CD",
+    "status": "Running",
+    "triggeredBy": "Jordan Chen",
+    "started": "2026-04-06T13:00:00Z",
+    "progress": 65,
+    "estimatedRemaining": "6m"
+  },
+  {
+    "id": "pipe-2",
+    "name": "Sentiment Model Training",
+    "type": "ML Training",
+    "status": "Running",
+    "triggeredBy": "Priya Patel",
+    "started": "2026-04-06T12:30:00Z",
+    "progress": 80,
+    "estimatedRemaining": "3m"
+  },
+  {
+    "id": "pipe-3",
+    "name": "DocuMind ETL",
+    "type": "Data ETL",
+    "status": "Running",
+    "triggeredBy": "Alex Kim",
+    "started": "2026-04-06T12:45:00Z",
+    "progress": 50,
+    "estimatedRemaining": "8m"
+  },
+  {
+    "id": "pipe-4",
+    "name": "Risk Model Build",
+    "type": "CI/CD",
+    "status": "Queued",
+    "triggeredBy": "Maria Lopez",
+    "started": null,
+    "progress": 0,
+    "estimatedRemaining": null
+  },
+  {
+    "id": "pipe-5",
+    "name": "Revenue Optimizer Training",
+    "type": "ML Training",
+    "status": "Queued",
+    "triggeredBy": "Priya Patel",
+    "started": null,
+    "progress": 0,
+    "estimatedRemaining": null
+  },
+  {
+    "id": "pipe-6",
+    "name": "Compliance Data ETL",
+    "type": "Data ETL",
+    "status": "Queued",
+    "triggeredBy": "Alex Kim",
+    "started": null,
+    "progress": 0,
+    "estimatedRemaining": null
+  },
+  {
+    "id": "pipe-7",
+    "name": "Platform Infra Build",
+    "type": "CI/CD",
+    "status": "Running",
+    "triggeredBy": "Jordan Chen",
+    "started": "2026-04-06T13:10:00Z",
+    "progress": 40,
+    "estimatedRemaining": "10m"
+  }
+]
