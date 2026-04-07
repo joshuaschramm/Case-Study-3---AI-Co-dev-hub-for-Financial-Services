@@ -1,0 +1,18 @@
+{
+  "monthly": [
+    { "month": "2025-11", "infra": 12000, "ml": 3500, "data": 2200, "api": 1800, "total": 19500 },
+    { "month": "2025-12", "infra": 12500, "ml": 3700, "data": 2300, "api": 1900, "total": 20400 },
+    { "month": "2026-01", "infra": 13000, "ml": 3900, "data": 2400, "api": 2000, "total": 21300 },
+    { "month": "2026-02", "infra": 12800, "ml": 4100, "data": 2500, "api": 2100, "total": 21500 },
+    { "month": "2026-03", "infra": 13500, "ml": 4300, "data": 2600, "api": 2200, "total": 22600 },
+    { "month": "2026-04", "infra": 14000, "ml": 4500, "data": 2700, "api": 2300, "total": 23500 }
+  ],
+  "byProduct": [
+    { "product": "Sentinel Fraud Detection", "cost": 5200, "usage": 120000 },
+    { "product": "Athena Insights", "cost": 4100, "usage": 95000 },
+    { "product": "DocuMind Processor", "cost": 3900, "usage": 80000 },
+    { "product": "Pulse Sentiment", "cost": 2500, "usage": 60000 },
+    { "product": "Guardian Risk Assessment", "cost": 3700, "usage": 110000 },
+    { "product": "Nexus Platform", "cost": 6000, "usage": 200000 }
+  ]
+}
