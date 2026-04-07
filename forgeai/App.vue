@@ -9,7 +9,7 @@
       <a-layout style="min-height: 100vh; background: transparent; position: relative; z-index: 1;">
         <AppSidebar />
         <a-layout>
-          <AppHeader />
+          <AppHeader :theme="appTheme" :notif-enabled="notifEnabled" @update:theme="setTheme" @update:notif-enabled="setNotifEnabled" />
           <a-layout-content style="padding: 24px; position: relative; z-index: 1;">
             <router-view />
           </a-layout-content>
@@ -20,29 +20,36 @@
 </template>
 
 <script setup>
+import { ref, computed } from 'vue'
 import { theme } from 'ant-design-vue'
 import AppSidebar from './components/layout/AppSidebar.vue'
 import AppHeader from './components/layout/AppHeader.vue'
 
-const themeConfig = {
+const appTheme = ref('dark')
+const notifEnabled = ref(true)
+
+const themeConfig = computed(() => ({
   token: {
     colorPrimary: '#7C4DFF',
     colorSuccess: '#69F0AE',
     colorWarning: '#FFD740',
     colorError: '#FF5252',
     colorInfo: '#448AFF',
-    colorBgBase: '#0a0a1a',
+    colorBgBase: appTheme.value === 'dark' ? '#0a0a1a' : '#fff',
     colorBgContainer: 'transparent',
-    colorBgElevated: 'rgba(20, 20, 40, 0.85)',
+    colorBgElevated: appTheme.value === 'dark' ? 'rgba(20, 20, 40, 0.85)' : 'rgba(255,255,255,0.85)',
     colorBorder: 'rgba(255, 255, 255, 0.1)',
-    colorText: 'rgba(255, 255, 255, 0.85)',
-    colorTextSecondary: 'rgba(255, 255, 255, 0.45)',
-    colorTextTertiary: 'rgba(255, 255, 255, 0.3)',
+    colorText: appTheme.value === 'dark' ? 'rgba(255, 255, 255, 0.85)' : '#222',
+    colorTextSecondary: appTheme.value === 'dark' ? 'rgba(255, 255, 255, 0.45)' : '#888',
+    colorTextTertiary: appTheme.value === 'dark' ? 'rgba(255, 255, 255, 0.3)' : '#bbb',
     borderRadius: 12,
     fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
     fontSize: 14,
     controlHeight: 40,
   },
-  algorithm: theme.darkAlgorithm,
-}
+  algorithm: appTheme.value === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm,
+}))
+
+function setTheme(val) { appTheme.value = val }
+function setNotifEnabled(val) { notifEnabled.value = val }
 </script>
