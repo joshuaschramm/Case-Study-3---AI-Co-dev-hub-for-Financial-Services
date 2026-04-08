@@ -63,7 +63,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, h } from 'vue'
 import { useDeploymentStore } from '../stores/deploymentStore'
 import GlassKpiCard from '../components/common/GlassKpiCard.vue'
 import GlassTable from '../components/common/GlassTable.vue'
@@ -99,6 +99,15 @@ const columns = [
   { title: 'Triggered By', dataIndex: 'triggeredBy', key: 'triggeredBy' },
   { title: 'Start Time', key: 'startTime', customRender: ({ record }) => new Date(record.startTime).toLocaleString() },
   { title: 'Duration', dataIndex: 'duration', key: 'duration' },
-  { title: 'Status', dataIndex: 'status', key: 'status', customRender: ({ record }) => `<a-tag color='${record.status === 'Success' ? 'green' : record.status === 'Failed' ? 'red' : 'orange'}'>${record.status}</a-tag>` }
+  {
+    title: 'Status',
+    dataIndex: 'status',
+    key: 'status',
+    customRender: ({ record }) => h(
+      'a-tag',
+      { color: record.status === 'Success' ? 'green' : record.status === 'Failed' ? 'red' : 'orange' },
+      record.status
+    )
+  }
 ]
 </script>

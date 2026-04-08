@@ -63,7 +63,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, h } from 'vue'
 import { useProductStore } from '../stores/productStore'
 import GlassKpiCard from '../components/common/GlassKpiCard.vue'
 import GlassTable from '../components/common/GlassTable.vue'
@@ -93,9 +93,26 @@ const filteredProducts = computed(() =>
 const prodCount = (statusVal) => productStore.products.filter(p => p.status === statusVal).length
 
 const columns = [
-  { title: 'Product', key: 'name', customRender: ({ record }) => `<span style='font-weight:bold;'>${record.name}</span><br/><span style='color:rgba(255,255,255,0.6);font-size:13px;'>${record.description}</span>` },
+  {
+    title: 'Product',
+    key: 'name',
+    customRender: ({ record }) => [
+      h('span', { style: 'font-weight:bold;' }, record.name),
+      h('br'),
+      h('span', { style: 'color:rgba(255,255,255,0.6);font-size:13px;' }, record.description)
+    ]
+  },
   { title: 'Domain', dataIndex: 'domain', key: 'domain' },
-  { title: 'Status', dataIndex: 'status', key: 'status', customRender: ({ record }) => `<a-tag color='${record.status === 'Production' ? 'green' : record.status === 'Staging' ? 'purple' : 'orange'}'>${record.status}</a-tag>` },
+  {
+    title: 'Status',
+    dataIndex: 'status',
+    key: 'status',
+    customRender: ({ record }) => h(
+      'a-tag',
+      { color: record.status === 'Production' ? 'green' : record.status === 'Staging' ? 'purple' : 'orange' },
+      record.status
+    )
+  },
   { title: 'Models', dataIndex: 'models', key: 'models' },
   { title: 'Uptime (%)', dataIndex: 'uptime', key: 'uptime', customRender: ({ record }) => record.uptime ? record.uptime.toFixed(2) : '' },
   { title: 'Users', dataIndex: 'users', key: 'users' },

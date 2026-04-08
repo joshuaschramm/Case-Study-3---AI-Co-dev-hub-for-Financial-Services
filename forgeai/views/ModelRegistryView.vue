@@ -63,7 +63,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, h } from 'vue'
 import { useModelStore } from '../stores/modelStore'
 import GlassKpiCard from '../components/common/GlassKpiCard.vue'
 import GlassTable from '../components/common/GlassTable.vue'
@@ -93,12 +93,29 @@ const filteredModels = computed(() =>
 const modelCount = (statusVal) => modelStore.models.filter(m => m.status === statusVal).length
 
 const columns = [
-  { title: 'Model', key: 'name', customRender: ({ record }) => `<span style='font-weight:bold;'>${record.name}</span><br/><span style='color:rgba(255,255,255,0.6);font-size:13px;'>${record.product}</span>` },
+  {
+    title: 'Model',
+    key: 'name',
+    customRender: ({ record }) => [
+      h('span', { style: 'font-weight:bold;' }, record.name),
+      h('br'),
+      h('span', { style: 'color:rgba(255,255,255,0.6);font-size:13px;' }, record.product)
+    ]
+  },
   { title: 'Version', dataIndex: 'version', key: 'version' },
   { title: 'Framework', dataIndex: 'framework', key: 'framework' },
   { title: 'Accuracy (%)', dataIndex: 'accuracy', key: 'accuracy', customRender: ({ record }) => record.accuracy ? record.accuracy.toFixed(2) : '' },
   { title: 'Latency (ms)', dataIndex: 'latency', key: 'latency' },
-  { title: 'Status', dataIndex: 'status', key: 'status', customRender: ({ record }) => `<a-tag color='${record.status === 'Active' ? 'green' : record.status === 'Training' ? 'purple' : 'orange'}'>${record.status}</a-tag>` },
+  {
+    title: 'Status',
+    dataIndex: 'status',
+    key: 'status',
+    customRender: ({ record }) => h(
+      'a-tag',
+      { color: record.status === 'Active' ? 'green' : record.status === 'Training' ? 'purple' : 'orange' },
+      record.status
+    )
+  },
   { title: 'Environment', dataIndex: 'environment', key: 'environment' },
   { title: 'Last Trained', key: 'lastTrained', customRender: ({ record }) => new Date(record.lastTrained).toLocaleDateString() }
 ]

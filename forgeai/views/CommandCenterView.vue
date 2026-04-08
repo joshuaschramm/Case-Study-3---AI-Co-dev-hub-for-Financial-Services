@@ -11,7 +11,10 @@
         Command Center
       </template>
       <template #extra>
-        <a-segmented :options="['Last 24 Hours', 'Last 7 Days', 'Last 30 Days', 'Last Quarter']" default-value="Last 7 Days" />
+        <a-segmented
+          :options="['Last 24 Hours', 'Last 7 Days', 'Last 30 Days', 'Last Quarter']"
+          v-model="selectedRange"
+        />
       </template>
     </a-page-header>
 
@@ -39,13 +42,13 @@
       <a-col :xs="24" :lg="16">
         <div class="glass-card" style="padding: 20px;">
           <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">Deployment Frequency</div>
-          <Bar :data="deploymentBarData" :options="barOptions" />
+          <Bar :data="deploymentBarData" :options="barOptions" :key="'deploy-' + selectedRange" />
         </div>
       </a-col>
       <a-col :xs="24" :lg="8">
         <div class="glass-card" style="padding: 20px;">
           <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">Product Status</div>
-          <Doughnut :data="productStatusData" :options="doughnutOptions" />
+          <Doughnut :data="productStatusData" :options="doughnutOptions" :key="'status-' + selectedRange" />
           <div style="text-align: center; margin-top: 10px; font-size: 15px; color: #fff;">18 Total Products</div>
         </div>
       </a-col>
@@ -56,13 +59,13 @@
       <a-col :xs="24" :lg="12">
         <div class="glass-card" style="padding: 20px;">
           <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">Model Accuracy Trends</div>
-          <Line :data="accuracyLineData" :options="lineOptions" />
+          <Line :data="accuracyLineData" :options="lineOptions" :key="'accuracy-' + selectedRange" />
         </div>
       </a-col>
       <a-col :xs="24" :lg="12">
         <div class="glass-card" style="padding: 20px;">
           <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">Monthly AI Spend by Category</div>
-          <Bar :data="spendBarData" :options="spendBarOptions" />
+          <Bar :data="spendBarData" :options="spendBarOptions" :key="'spend-' + selectedRange" />
         </div>
       </a-col>
     </a-row>
@@ -87,7 +90,10 @@
 </template>
 
 <script setup>
+import { ref, computed } from 'vue'
 import { Bar, Doughnut, Line } from 'vue-chartjs'
+const selectedRange = ref('Last 7 Days')
+
 import { DashboardOutlined, AppstoreOutlined, ExperimentOutlined, CloudUploadOutlined, ClockCircleOutlined, CheckCircleOutlined, DollarOutlined, ArrowUpOutlined, ArrowDownOutlined, WarningOutlined, UserOutlined, ApiOutlined, CloseCircleOutlined } from '@ant-design/icons-vue'
 
 const kpis = [
@@ -99,13 +105,63 @@ const kpis = [
   { label: 'Monthly AI Spend', value: '$284K', icon: DollarOutlined, glow: 'glow-yellow', bg: '#FFD740', trend: '+8% vs budget', trendColor: 'warning', trendIcon: WarningOutlined }
 ]
 
-const deploymentBarData = {
-  labels: ['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12'],
-  datasets: [
-    { label: 'Successful', backgroundColor: '#69F0AE', data: [15,18,22,19,25,21,28,24,30,27,23,23], stack: 'deploy' },
-    { label: 'Failed', backgroundColor: '#FF5252', data: [2,1,3,1,0,2,1,3,1,0,2,0], stack: 'deploy' }
-  ]
+// Chart data by range
+const deploymentBarDataMap = {
+  'Last 24 Hours': {
+    labels: ['W12'],
+    datasets: [
+      { label: 'Successful', backgroundColor: '#69F0AE', data: [5], stack: 'deploy' },
+      { label: 'Failed', backgroundColor: '#FF5252', data: [10], stack: 'deploy' }
+    ]
+  },
+  'Last 7 Days': {
+    labels: ['W6','W7','W8','W9','W10','W11','W12'],
+    datasets: [
+      { label: 'Successful', backgroundColor: '#69F0AE', data: [10,5,15,8,12,7,20], stack: 'deploy' },
+      { label: 'Failed', backgroundColor: '#FF5252', data: [5,10,2,7,3,8,1], stack: 'deploy' }
+    ]
+  },
+  'Last 30 Days': {
+    labels: ['W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12'],
+    datasets: [
+      { label: 'Successful', backgroundColor: '#69F0AE', data: [2,8,4,12,6,14,10,18,9,11,13], stack: 'deploy' },
+      { label: 'Failed', backgroundColor: '#FF5252', data: [12,6,10,2,8,4,7,3,5,9,2], stack: 'deploy' }
+    ]
+  },
+  'Last Quarter': {
+    labels: ['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12'],
+    datasets: [
+      { label: 'Successful', backgroundColor: '#69F0AE', data: [1,3,5,7,9,11,13,15,17,19,21,23], stack: 'deploy' },
+      { label: 'Failed', backgroundColor: '#FF5252', data: [23,21,19,17,15,13,11,9,7,5,3,1], stack: 'deploy' }
+    ]
+  }
 }
+const deploymentBarData = computed(() => deploymentBarDataMap[selectedRange.value])
+
+const productStatusDataMap = {
+  'Last 24 Hours': { labels: ['Production','Staging','Development','Archived'], datasets: [{ data: [1,10,2,8], backgroundColor: ['#69F0AE','#448AFF','#FFD740','#666'] }] },
+  'Last 7 Days': { labels: ['Production','Staging','Development','Archived'], datasets: [{ data: [10,2,8,1], backgroundColor: ['#69F0AE','#448AFF','#FFD740','#666'] }] },
+  'Last 30 Days': { labels: ['Production','Staging','Development','Archived'], datasets: [{ data: [5,5,5,5], backgroundColor: ['#69F0AE','#448AFF','#FFD740','#666'] }] },
+  'Last Quarter': { labels: ['Production','Staging','Development','Archived'], datasets: [{ data: [12,3,7,2], backgroundColor: ['#69F0AE','#448AFF','#FFD740','#666'] }] }
+}
+const productStatusData = computed(() => productStatusDataMap[selectedRange.value])
+
+const accuracyLineDataMap = {
+  'Last 24 Hours': { labels: ['Apr'], datasets: [ { label: 'Fraud Detection', borderColor: '#7C4DFF', backgroundColor: 'rgba(124,77,255,0.2)', data: [80], fill: true }, { label: 'Sentiment Analysis', borderColor: '#00BFA5', backgroundColor: 'rgba(0,191,165,0.2)', data: [60], fill: true }, { label: 'Document Processing', borderColor: '#FF6D00', backgroundColor: 'rgba(255,109,0,0.2)', data: [40], fill: true } ] },
+  'Last 7 Days': { labels: ['Mar','Apr'], datasets: [ { label: 'Fraud Detection', borderColor: '#7C4DFF', backgroundColor: 'rgba(124,77,255,0.2)', data: [60,90], fill: true }, { label: 'Sentiment Analysis', borderColor: '#00BFA5', backgroundColor: 'rgba(0,191,165,0.2)', data: [90,60], fill: true }, { label: 'Document Processing', borderColor: '#FF6D00', backgroundColor: 'rgba(255,109,0,0.2)', data: [70,100], fill: true } ] },
+  'Last 30 Days': { labels: ['Feb','Mar','Apr'], datasets: [ { label: 'Fraud Detection', borderColor: '#7C4DFF', backgroundColor: 'rgba(124,77,255,0.2)', data: [100,50,80], fill: true }, { label: 'Sentiment Analysis', borderColor: '#00BFA5', backgroundColor: 'rgba(0,191,165,0.2)', data: [40,100,60], fill: true }, { label: 'Document Processing', borderColor: '#FF6D00', backgroundColor: 'rgba(255,109,0,0.2)', data: [90,30,70], fill: true } ] },
+  'Last Quarter': { labels: ['Jan','Feb','Mar','Apr','May','Jun'], datasets: [ { label: 'Fraud Detection', borderColor: '#7C4DFF', backgroundColor: 'rgba(124,77,255,0.2)', data: [10,20,30,40,50,60], fill: true }, { label: 'Sentiment Analysis', borderColor: '#00BFA5', backgroundColor: 'rgba(0,191,165,0.2)', data: [60,50,40,30,20,10], fill: true }, { label: 'Document Processing', borderColor: '#FF6D00', backgroundColor: 'rgba(255,109,0,0.2)', data: [15,25,35,45,55,65], fill: true } ] }
+}
+const accuracyLineData = computed(() => accuracyLineDataMap[selectedRange.value])
+
+const spendBarDataMap = {
+  'Last 24 Hours': { labels: ['Compute (GPU)','Storage'], datasets: [{ label: 'Spend', data: [1000,9000], backgroundColor: ['#7C4DFF','#00BFA5'] }] },
+  'Last 7 Days': { labels: ['Compute (GPU)','Storage','API Calls'], datasets: [{ label: 'Spend', data: [20000,1000,5000], backgroundColor: ['#7C4DFF','#00BFA5','#FF6D00'] }] },
+  'Last 30 Days': { labels: ['Compute (GPU)','Storage','API Calls','Data Transfer'], datasets: [{ label: 'Spend', data: [50000,20000,10000,30000], backgroundColor: ['#7C4DFF','#00BFA5','#FF6D00','#448AFF'] }] },
+  'Last Quarter': { labels: ['Compute (GPU)','Storage','API Calls','Data Transfer','Licensing'], datasets: [{ label: 'Spend', data: [100000,50000,25000,75000,125000], backgroundColor: ['#7C4DFF','#00BFA5','#FF6D00','#448AFF','#FFD740'] }] }
+}
+const spendBarData = computed(() => spendBarDataMap[selectedRange.value])
+// Chart options (shared)
 const barOptions = {
   responsive: true,
   plugins: { legend: { labels: { color: 'rgba(255,255,255,0.7)' } } },
@@ -114,21 +170,9 @@ const barOptions = {
     y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'rgba(255,255,255,0.5)' } }
   }
 }
-const productStatusData = {
-  labels: ['Production','Staging','Development','Archived'],
-  datasets: [{ data: [8,4,5,1], backgroundColor: ['#69F0AE','#448AFF','#FFD740','#666'] }]
-}
 const doughnutOptions = {
   cutout: '70%',
   plugins: { legend: { labels: { color: 'rgba(255,255,255,0.7)' } } }
-}
-const accuracyLineData = {
-  labels: ['Jan','Feb','Mar','Apr','May','Jun'],
-  datasets: [
-    { label: 'Fraud Detection', borderColor: '#7C4DFF', backgroundColor: 'rgba(124,77,255,0.2)', data: [94.2,94.8,95.1,95.6,96.0,96.3], fill: true },
-    { label: 'Sentiment Analysis', borderColor: '#00BFA5', backgroundColor: 'rgba(0,191,165,0.2)', data: [88.5,89.2,90.1,89.8,91.2,91.8], fill: true },
-    { label: 'Document Processing', borderColor: '#FF6D00', backgroundColor: 'rgba(255,109,0,0.2)', data: [91.0,91.5,92.3,93.0,93.2,93.8], fill: true }
-  ]
 }
 const lineOptions = {
   responsive: true,
@@ -137,10 +181,6 @@ const lineOptions = {
     x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'rgba(255,255,255,0.5)' } },
     y: { min: 85, max: 100, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'rgba(255,255,255,0.5)' } }
   }
-}
-const spendBarData = {
-  labels: ['Compute (GPU)','Storage','API Calls','Data Transfer','Licensing'],
-  datasets: [{ label: 'Spend', data: [142000,48000,38000,28000,28000], backgroundColor: ['#7C4DFF','#00BFA5','#FF6D00','#448AFF','#FFD740'] }]
 }
 const spendBarOptions = {
   responsive: true,
