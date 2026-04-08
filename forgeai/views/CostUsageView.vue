@@ -5,6 +5,7 @@
       :title="'Cost & Usage'"
       :sub-title="'Track cloud spend and product usage'"
       class="glass-card"
+      style="margin-bottom: 16px;"
     >
       <template #title>
         <DollarOutlined style="font-size: 22px; margin-right: 8px; color: #00BFA5" />

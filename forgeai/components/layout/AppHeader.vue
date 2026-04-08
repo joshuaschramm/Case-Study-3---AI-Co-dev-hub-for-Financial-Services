@@ -1,5 +1,5 @@
 <template>
-  <a-layout-header class="glass-topbar" style="position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 64px;">
+  <a-layout-header class="glass-topbar" style="position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 101px;">
     <div style="flex: 1; display: flex; justify-content: center;">
       <a-input-search
         class="glass-input"

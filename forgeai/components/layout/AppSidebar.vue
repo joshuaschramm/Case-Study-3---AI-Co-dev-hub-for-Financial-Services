@@ -1,16 +1,21 @@
 <template>
   <a-layout-sider
     width="280"
-    collapsible
     class="glass-sidebar"
     :style="{ minHeight: '100vh', position: 'relative', zIndex: 2 }"
-    v-model:collapsed="collapsed"
   >
     <div style="padding: 32px 24px 12px 24px;">
-      <div style="font-weight: bold; font-size: 22px; color: #fff; letter-spacing: 1px;">⚡ ForgeAI</div>
+      <img src="/assets/logo.svg" alt="ForgeAI Logo" style="height: 36px; margin-bottom: 2px;" />
       <div class="text-muted" style="font-size: 13px; margin-top: 2px;">Summit National Bank</div>
     </div>
     <a-divider style="border-color: rgba(255,255,255,0.08); margin: 0 0 16px 0;" />
+    <div class="glass-card-subtle" style="padding: 16px; display: flex; align-items: center; gap: 12px; margin: 0 24px 18px 24px;">
+      <div>
+        <div style="font-weight: 500; color: #fff;">Jordan Chen</div>
+        <div class="text-muted" style="font-size: 13px;">Platform Engineering Lead</div>
+      </div>
+      <a-tag color="purple" style="margin-left: auto;">Admin</a-tag>
+    </div>
     <a-menu
       theme="dark"
       mode="inline"
@@ -56,21 +61,12 @@
         </a-menu-item>
       </a-menu-item-group>
     </a-menu>
-    <div style="position: absolute; bottom: 24px; left: 24px; right: 24px;">
-      <div class="glass-card-subtle" style="padding: 16px; display: flex; align-items: center; gap: 12px;">
-        <a-avatar style="background: #7c4dff;">JC</a-avatar>
-        <div>
-          <div style="font-weight: 500; color: #fff;">Jordan Chen</div>
-          <div class="text-muted" style="font-size: 13px;">Platform Engineering Lead</div>
-        </div>
-        <a-tag color="purple" style="margin-left: auto;">Admin</a-tag>
-      </div>
-    </div>
+    <!-- User card moved to top -->
   </a-layout-sider>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import {
   DashboardOutlined,
@@ -86,7 +82,6 @@ import {
 
 const route = useRoute()
 const router = useRouter()
-const collapsed = ref(false)
 const selectedKey = computed(() => route.path)
 const openKeys = ref(['overview', 'ai-products', 'engineering', 'insights'])
 

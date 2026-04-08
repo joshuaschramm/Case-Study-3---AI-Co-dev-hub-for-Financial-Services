@@ -4,6 +4,7 @@
       :title="'Team Velocity'"
       :sub-title="'Track how fast your teams are shipping AI products'"
       class="glass-card"
+      style="margin-bottom: 16px;"
     >
       <template #title>
         <RocketOutlined style="font-size: 22px; margin-right: 8px; color: #7C4DFF" />

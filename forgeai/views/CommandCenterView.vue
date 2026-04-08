@@ -4,6 +4,7 @@
       :title="'Command Center'"
       :sub-title="'Real-time overview of the AI Product Factory'"
       class="glass-card"
+      style="margin-bottom: 16px;"
     >
       <template #title>
         <DashboardOutlined style="font-size: 22px; margin-right: 8px; color: #7C4DFF" />

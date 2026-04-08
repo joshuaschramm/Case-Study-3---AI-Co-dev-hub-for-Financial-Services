@@ -5,6 +5,7 @@
       :title="'Performance Analytics'"
       :sub-title="'Analyze system latency and API usage'"
       class="glass-card"
+      style="margin-bottom: 16px;"
     >
       <template #title>
         <LineChartOutlined style="font-size: 22px; margin-right: 8px; color: #00BFA5" />
