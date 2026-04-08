@@ -4,6 +4,8 @@
       <a-input-search
         class="glass-input"
         :class="theme === 'light' ? 'text-dark' : ''"
+        v-model:value="searchValue"
+        @search="onSearch"
         placeholder="Search products, models, pipelines..."
         style="max-width: 500px; width: 100%;"
       />
@@ -41,6 +43,7 @@
 <script setup>
 
 import { ref, watch, inject } from 'vue'
+import { useRouter } from 'vue-router'
 import { BellOutlined } from '@ant-design/icons-vue'
 
 const props = defineProps({
@@ -49,6 +52,15 @@ const props = defineProps({
 })
 const theme = inject('theme', 'dark')
 const emit = defineEmits(['update:theme', 'update:notif-enabled'])
+
+const searchValue = ref('')
+const router = useRouter()
+
+function onSearch(value) {
+  const query = value.trim()
+  if (!query) return
+  router.push({ path: '/search', query: { q: query } })
+}
 
 const showSettings = ref(false)
 const themeLocal = ref(props.theme)

@@ -9,7 +9,8 @@ const routes = [
   { path: '/components', name: 'ComponentLibrary', component: () => import('../views/ComponentLibraryView.vue') },
   { path: '/pipelines', name: 'PipelineMonitor', component: () => import('../views/PipelineMonitorView.vue') },
   { path: '/analytics', name: 'PerformanceAnalytics', component: () => import('../views/PerformanceAnalyticsView.vue') },
-  { path: '/costs', name: 'CostUsage', component: () => import('../views/CostUsageView.vue') }
+  { path: '/costs', name: 'CostUsage', component: () => import('../views/CostUsageView.vue') },
+  { path: '/search', name: 'SearchResults', component: () => import('../views/SearchResultsView.vue') }
 ]
 
 const router = createRouter({

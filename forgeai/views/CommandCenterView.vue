@@ -11,10 +11,9 @@
         Command Center
       </template>
       <template #extra>
-        <a-segmented
-          :options="['Last 24 Hours', 'Last 7 Days', 'Last 30 Days', 'Last Quarter']"
-          v-model="selectedRange"
-        />
+        <div :class="['text-muted', theme === 'light' ? 'text-muted--light' : '']" style="font-size: 15px;">
+          {{ dateRangeLabel }}
+        </div>
       </template>
     </a-page-header>
 
@@ -93,6 +92,21 @@
 import { ref, computed } from 'vue'
 import { Bar, Doughnut, Line } from 'vue-chartjs'
 const selectedRange = ref('Last 7 Days')
+
+const dateRangeLabel = computed(() => {
+  switch (selectedRange.value) {
+    case 'Last 24 Hours':
+      return 'Apr 7, 2026 – Apr 8, 2026'
+    case 'Last 7 Days':
+      return 'Apr 1, 2026 – Apr 8, 2026'
+    case 'Last 30 Days':
+      return 'Mar 9, 2026 – Apr 8, 2026'
+    case 'Last Quarter':
+      return 'Jan 8, 2026 – Apr 8, 2026'
+    default:
+      return ''
+  }
+})
 
 import { DashboardOutlined, AppstoreOutlined, ExperimentOutlined, CloudUploadOutlined, ClockCircleOutlined, CheckCircleOutlined, DollarOutlined, ArrowUpOutlined, ArrowDownOutlined, WarningOutlined, UserOutlined, ApiOutlined, CloseCircleOutlined } from '@ant-design/icons-vue'
 
