@@ -5,7 +5,7 @@
     :style="{ minHeight: '100vh', position: 'relative', zIndex: 2, color: theme === 'light' ? '#222' : '#fff' }"
   >
     <div style="padding: 32px 24px 12px 24px;">
-      <img :src="theme === 'light' ? '/assets/logo-dark.svg' : '/assets/logo.svg'" alt="ForgeAI Logo" style="height: 36px; margin-bottom: 2px;" />
+      <img :src="theme === 'light' ? '/logo-dark.svg' : '/logo.svg'" alt="ForgeAI Logo" style="height: 36px; margin-bottom: 2px;" />
       <div :class="theme === 'light' ? 'text-dark' : 'text-muted'" style="font-size: 13px; margin-top: 2px;">Summit National Bank</div>
     </div>
     <a-divider style="border-color: rgba(255,255,255,0.08); margin: 0 0 16px 0;" />
