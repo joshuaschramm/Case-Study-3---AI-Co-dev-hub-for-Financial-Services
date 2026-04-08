@@ -27,6 +27,7 @@
           :title="'Total Products'"
           :value="filteredProducts.length"
           :glow-class="'glow-blue'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -35,6 +36,7 @@
           :title="'Production'"
           :value="prodCount('Production')"
           :glow-class="'glow-green'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -43,6 +45,7 @@
           :title="'Staging'"
           :value="prodCount('Staging')"
           :glow-class="'glow-purple'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -51,19 +54,20 @@
           :title="'In Development'"
           :value="prodCount('Development')"
           :glow-class="'glow-orange'"
+          :theme="theme"
         />
       </a-col>
     </a-row>
 
     <!-- Product Table -->
     <div class="glass-card" style="padding: 20px;">
-      <GlassTable :columns="columns" :data="filteredProducts" :row-key="'id'" :pagination="{ pageSize: 8 }" />
+      <GlassTable :columns="columns" :data="filteredProducts" :row-key="'id'" :pagination="{ pageSize: 8 }" :theme="theme" />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, h } from 'vue'
+import { ref, computed, h, inject } from 'vue'
 import { useProductStore } from '../stores/productStore'
 import GlassKpiCard from '../components/common/GlassKpiCard.vue'
 import GlassTable from '../components/common/GlassTable.vue'
@@ -73,6 +77,7 @@ const productStore = useProductStore()
 const search = ref('')
 const status = ref('All')
 const domain = ref('All')
+const theme = inject('theme', 'dark')
 
 const statusOptions = [
   { label: 'All Statuses', value: 'All' },

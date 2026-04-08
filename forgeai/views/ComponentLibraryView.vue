@@ -26,6 +26,7 @@
           :title="'Total Components'"
           :value="filteredComponents.length"
           :glow-class="'glow-blue'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -34,6 +35,7 @@
           :title="'Most Starred'"
           :value="mostStarred"
           :glow-class="'glow-yellow'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -42,6 +44,7 @@
           :title="'Most Downloaded'"
           :value="mostDownloaded"
           :glow-class="'glow-green'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -50,13 +53,14 @@
           :title="'Most Used'"
           :value="mostUsed"
           :glow-class="'glow-purple'"
+          :theme="theme"
         />
       </a-col>
     </a-row>
 
     <!-- Components Table -->
     <div class="glass-card" style="padding: 20px;">
-      <GlassTable :columns="columns" :data="filteredComponents" :row-key="'id'" :pagination="{ pageSize: 8 }" />
+      <GlassTable :columns="columns" :data="filteredComponents" :row-key="'id'" :pagination="{ pageSize: 8 }" :theme="theme" />
     </div>
   </div>
 </template>

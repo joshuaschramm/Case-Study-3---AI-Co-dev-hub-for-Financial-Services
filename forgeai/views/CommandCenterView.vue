@@ -24,9 +24,9 @@
         <div class="glass-card" :class="kpi.glow" style="padding: 20px;">
           <div style="display: flex; align-items: center; margin-bottom: 8px;">
             <component :is="kpi.icon" style="font-size: 28px; color: white; background: kpi.bg; border-radius: 50%; padding: 8px; margin-right: 12px;" />
-            <span class="text-light" style="font-size: 2rem; font-weight: bold;">{{ kpi.value }}</span>
+            <span :class="['text-light', theme === 'light' ? 'text-light--light' : '']" style="font-size: 2rem; font-weight: bold;">{{ kpi.value }}</span>
           </div>
-          <div class="text-muted" style="font-size: 13px;">{{ kpi.label }}</div>
+          <div :class="['text-muted', theme === 'light' ? 'text-muted--light' : '']" style="font-size: 13px;">{{ kpi.label }}</div>
           <div style="margin-top: 6px;">
             <a-tag :color="kpi.trendColor">
               <component v-if="kpi.trendIcon" :is="kpi.trendIcon" />
@@ -41,13 +41,13 @@
     <a-row :gutter="[16, 16]" style="margin-bottom: 16px;">
       <a-col :xs="24" :lg="16">
         <div class="glass-card" style="padding: 20px;">
-          <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">Deployment Frequency</div>
+          <div :class="['text-light', theme === 'light' ? 'text-light--light' : '']" style="font-weight: bold; margin-bottom: 12px;">Deployment Frequency</div>
           <Bar :data="deploymentBarData" :options="barOptions" :key="'deploy-' + selectedRange" />
         </div>
       </a-col>
       <a-col :xs="24" :lg="8">
         <div class="glass-card" style="padding: 20px;">
-          <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">Product Status</div>
+          <div :class="['text-light', theme === 'light' ? 'text-light--light' : '']" style="font-weight: bold; margin-bottom: 12px;">Product Status</div>
           <Doughnut :data="productStatusData" :options="doughnutOptions" :key="'status-' + selectedRange" />
           <div style="text-align: center; margin-top: 10px; font-size: 15px; color: #fff;">18 Total Products</div>
         </div>
@@ -58,13 +58,13 @@
     <a-row :gutter="[16, 16]" style="margin-bottom: 16px;">
       <a-col :xs="24" :lg="12">
         <div class="glass-card" style="padding: 20px;">
-          <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">Model Accuracy Trends</div>
+          <div :class="['text-light', theme === 'light' ? 'text-light--light' : '']" style="font-weight: bold; margin-bottom: 12px;">Model Accuracy Trends</div>
           <Line :data="accuracyLineData" :options="lineOptions" :key="'accuracy-' + selectedRange" />
         </div>
       </a-col>
       <a-col :xs="24" :lg="12">
         <div class="glass-card" style="padding: 20px;">
-          <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">Monthly AI Spend by Category</div>
+          <div :class="['text-light', theme === 'light' ? 'text-light--light' : '']" style="font-weight: bold; margin-bottom: 12px;">Monthly AI Spend by Category</div>
           <Bar :data="spendBarData" :options="spendBarOptions" :key="'spend-' + selectedRange" />
         </div>
       </a-col>

@@ -19,6 +19,7 @@
           :value="'Sprint 14'"
           :glow-class="'glow-purple'"
           :trend-text="'Mar 30 – Apr 10, 2026'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -27,6 +28,7 @@
           :title="'Story Points Completed'"
           :value="'68 / 85'"
           :glow-class="'glow-teal'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -35,6 +37,7 @@
           :title="'Sprint Burndown'"
           :value="'On Track'"
           :glow-class="'glow-green'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -43,40 +46,41 @@
           :title="'Team Members Active'"
           :value="'24 / 26'"
           :glow-class="'glow-blue'"
+          :theme="theme"
         />
       </a-col>
     </a-row>
     <!-- Velocity Chart -->
     <div class="glass-card" style="padding: 20px; margin-bottom: 16px;">
-      <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">Sprint Velocity — Last 8 Sprints</div>
+      <div :class="['text-light', theme === 'light' ? 'text-light--light' : '']" style="font-weight: bold; margin-bottom: 12px;">Sprint Velocity — Last 8 Sprints</div>
       <Bar :data="velocityBarData" :options="velocityBarOptions" />
     </div>
 
     <!-- Team Breakdown Table -->
     <div class="glass-card" style="padding: 20px; margin-bottom: 16px;">
-      <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">Team Performance</div>
+      <div :class="['text-light', theme === 'light' ? 'text-light--light' : '']" style="font-weight: bold; margin-bottom: 12px;">Team Performance</div>
       <GlassTable :columns="teamColumns" :data="teams" :row-key="'id'" :pagination="false" />
     </div>
 
     <!-- Cycle Time Distribution Chart -->
     <div class="glass-card" style="padding: 20px; margin-bottom: 16px;">
-      <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">Feature Cycle Time Distribution (Days)</div>
+      <div :class="['text-light', theme === 'light' ? 'text-light--light' : '']" style="font-weight: bold; margin-bottom: 12px;">Feature Cycle Time Distribution (Days)</div>
       <Bar :data="cycleTimeData" :options="cycleTimeOptions" />
       <a-tag style="margin-top: 10px;">Median: 7 days</a-tag>
     </div>
 
     <!-- Blockers & Risks -->
     <div class="glass-card" style="padding: 20px;">
-      <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">
+      <div :class="['text-light', theme === 'light' ? 'text-light--light' : '']" style="font-weight: bold; margin-bottom: 12px;">
         <WarningOutlined style="color: #FFD740; margin-right: 8px;" />Active Blockers & Risks
       </div>
       <a-list :data-source="blockers" bordered>
         <template #renderItem="{ item }">
           <a-list-item>
             <a-badge :status="badgeStatus(item.severity)" />
-            <span class="text-light" style="margin-left: 8px;">{{ item.description }}</span>
+            <span :class="['text-light', theme === 'light' ? 'text-light--light' : '']" style="margin-left: 8px;">{{ item.description }}</span>
             <a-tag class="glass-tag" style="margin-left: 16px;">{{ item.team }}</a-tag>
-            <span class="text-muted" style="margin-left: auto;">{{ item.daysOpen }} days open</span>
+            <span :class="['text-muted', theme === 'light' ? 'text-muted--light' : '']" style="margin-left: auto;">{{ item.daysOpen }} days open</span>
             <a-button type="link" size="small" style="margin-left: 16px;">View</a-button>
           </a-list-item>
         </template>
@@ -91,10 +95,11 @@ import { useTeamStore } from '../stores/teamStore'
 import GlassKpiCard from '../components/common/GlassKpiCard.vue'
 import GlassTable from '../components/common/GlassTable.vue'
 import { RocketOutlined, CalendarOutlined, CheckCircleOutlined, TeamOutlined, WarningOutlined } from '@ant-design/icons-vue'
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 
 const teamStore = useTeamStore()
 const teams = computed(() => teamStore.teamList)
+const theme = inject('theme', 'dark')
 
 const blockers = [
   { severity: 'Critical', description: 'Production deployment blocked by failed integration tests.', team: 'DocuMind', daysOpen: 2 },

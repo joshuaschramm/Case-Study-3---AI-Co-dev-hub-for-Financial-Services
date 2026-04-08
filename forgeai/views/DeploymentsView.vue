@@ -27,6 +27,7 @@
           :title="'Total Deployments'"
           :value="filteredDeployments.length"
           :glow-class="'glow-blue'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -35,6 +36,7 @@
           :title="'Success'"
           :value="deployCount('Success')"
           :glow-class="'glow-green'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -43,6 +45,7 @@
           :title="'Failed'"
           :value="deployCount('Failed')"
           :glow-class="'glow-red'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -51,13 +54,14 @@
           :title="'In Progress'"
           :value="deployCount('In Progress')"
           :glow-class="'glow-orange'"
+          :theme="theme"
         />
       </a-col>
     </a-row>
 
     <!-- Deployments Table -->
     <div class="glass-card" style="padding: 20px;">
-      <GlassTable :columns="columns" :data="filteredDeployments" :row-key="'id'" :pagination="{ pageSize: 8 }" />
+      <GlassTable :columns="columns" :data="filteredDeployments" :row-key="'id'" :pagination="{ pageSize: 8 }" :theme="theme" />
     </div>
   </div>
 </template>

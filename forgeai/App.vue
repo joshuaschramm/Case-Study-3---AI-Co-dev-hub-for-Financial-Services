@@ -20,13 +20,17 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+
+import { ref, computed, provide } from 'vue'
 import { theme } from 'ant-design-vue'
+
 import AppSidebar from './components/layout/AppSidebar.vue'
 import AppHeader from './components/layout/AppHeader.vue'
 
+
 const appTheme = ref('dark')
 const notifEnabled = ref(true)
+provide('theme', appTheme)
 
 const themeConfig = computed(() => ({
   token: {

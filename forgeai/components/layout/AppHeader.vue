@@ -1,8 +1,9 @@
 <template>
-  <a-layout-header class="glass-topbar" style="position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 101px;">
+  <a-layout-header :class="['glass-topbar', theme === 'light' ? 'glass-topbar--light' : '']" style="position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 101px;">
     <div style="flex: 1; display: flex; justify-content: center;">
       <a-input-search
         class="glass-input"
+        :class="theme === 'light' ? 'text-dark' : ''"
         placeholder="Search products, models, pipelines..."
         style="max-width: 500px; width: 100%;"
       />
@@ -23,7 +24,7 @@
             </a-list>
           </template>
           <span style="position: relative; display: inline-block;">
-            <a-button type="text" shape="circle" style="color: #fff;">
+            <a-button type="text" shape="circle" :style="{ color: theme === 'light' ? '#222' : '#fff' }">
               <span style="position: absolute; top: 9px; right: 4px; pointer-events: none;">
                 <span v-if="notifications.length > 0"
                   style="display: block; width: 9px; height: 9px; background: #ff4d4f; border-radius: 50%; border: 1.5px solid #181c2a; z-index: 2; box-shadow: 0 0 0 1.5px #181c2a;"></span>
@@ -33,32 +34,20 @@
           </span>
         </a-dropdown>
       </template>
-
-      <!-- Settings Modal -->
-      <a-button type="text" shape="circle" style="color: #fff;" @click="showSettings = true">
-        <SettingOutlined />
-      </a-button>
-      <a-modal v-model:open="showSettings" title="Settings" width="400px" :footer="null">
-        <div style="margin-bottom: 16px; font-weight: bold;">Theme</div>
-        <a-radio-group v-model:value="themeLocal" style="margin-bottom: 24px;" @change="onThemeChange">
-          <a-radio value="dark">Dark</a-radio>
-          <a-radio value="light">Light</a-radio>
-        </a-radio-group>
-        <div style="margin-bottom: 16px; font-weight: bold;">Notifications</div>
-        <a-switch v-model:checked="notifEnabledLocal" @change="onNotifChange" /> Enable notifications
-      </a-modal>
     </a-space>
   </a-layout-header>
 </template>
 
 <script setup>
-import { ref, watch, defineProps, defineEmits } from 'vue'
-import { BellOutlined, SettingOutlined } from '@ant-design/icons-vue'
+
+import { ref, watch, inject } from 'vue'
+import { BellOutlined } from '@ant-design/icons-vue'
 
 const props = defineProps({
   theme: { type: String, default: 'dark' },
   notifEnabled: { type: Boolean, default: true }
 })
+const theme = inject('theme', 'dark')
 const emit = defineEmits(['update:theme', 'update:notif-enabled'])
 
 const showSettings = ref(false)

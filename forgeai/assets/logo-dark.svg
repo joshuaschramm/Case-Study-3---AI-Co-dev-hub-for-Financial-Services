@@ -23,7 +23,7 @@
       }
 
       .cls-6 {
-        fill: #fff;
+        fill: #c6c6c6;
       }
     </style>
     <linearGradient id="linear-gradient" x1="8.39" y1="21.38" x2="8.39" y2="0" gradientUnits="userSpaceOnUse">

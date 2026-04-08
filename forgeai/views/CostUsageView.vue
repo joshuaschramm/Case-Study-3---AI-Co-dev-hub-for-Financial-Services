@@ -21,6 +21,7 @@
           :title="'Current Month Spend'"
           :value="`$${monthly[monthly.length-1].total.toLocaleString()}`"
           :glow-class="'glow-blue'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -29,6 +30,7 @@
           :title="'Infra'"
           :value="`$${monthly[monthly.length-1].infra.toLocaleString()}`"
           :glow-class="'glow-purple'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -37,6 +39,7 @@
           :title="'ML/AI'"
           :value="`$${monthly[monthly.length-1].ml.toLocaleString()}`"
           :glow-class="'glow-green'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -45,20 +48,21 @@
           :title="'Data & API'"
           :value="`$${(monthly[monthly.length-1].data + monthly[monthly.length-1].api).toLocaleString()}`"
           :glow-class="'glow-orange'"
+          :theme="theme"
         />
       </a-col>
     </a-row>
 
     <!-- Monthly Cost Breakdown Chart -->
     <div class="glass-card" style="padding: 20px; margin-bottom: 16px;">
-      <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">Monthly Cost Breakdown (Last 6 Months)</div>
+      <div :class="['text-light', theme === 'light' ? 'text-light--light' : '']" style="font-weight: bold; margin-bottom: 12px;">Monthly Cost Breakdown (Last 6 Months)</div>
       <Bar :data="costChartData" :options="costChartOptions" />
     </div>
 
     <!-- Product Cost & Usage Table -->
     <div class="glass-card" style="padding: 20px;">
-      <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">Product Cost & Usage</div>
-      <GlassTable :columns="columns" :data="byProduct" :row-key="'product'" :pagination="false" />
+      <div :class="['text-light', theme === 'light' ? 'text-light--light' : '']" style="font-weight: bold; margin-bottom: 12px;">Product Cost & Usage</div>
+      <GlassTable :columns="columns" :data="byProduct" :row-key="'product'" :pagination="false" :theme="theme" />
     </div>
   </div>
 </template>

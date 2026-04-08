@@ -27,6 +27,7 @@
           :title="'Total Models'"
           :value="filteredModels.length"
           :glow-class="'glow-blue'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -35,6 +36,7 @@
           :title="'Active'"
           :value="modelCount('Active')"
           :glow-class="'glow-green'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -43,6 +45,7 @@
           :title="'Training'"
           :value="modelCount('Training')"
           :glow-class="'glow-purple'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -51,13 +54,14 @@
           :title="'Inactive'"
           :value="modelCount('Inactive')"
           :glow-class="'glow-orange'"
+          :theme="theme"
         />
       </a-col>
     </a-row>
 
     <!-- Model Table -->
     <div class="glass-card" style="padding: 20px;">
-      <GlassTable :columns="columns" :data="filteredModels" :row-key="'id'" :pagination="{ pageSize: 8 }" />
+      <GlassTable :columns="columns" :data="filteredModels" :row-key="'id'" :pagination="{ pageSize: 8 }" :theme="theme" />
     </div>
   </div>
 </template>

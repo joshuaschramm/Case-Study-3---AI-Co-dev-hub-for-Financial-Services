@@ -21,6 +21,7 @@
           :title="'Median Latency (ms)'"
           :value="latency.p50[latency.p50.length-1]"
           :glow-class="'glow-blue'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -29,6 +30,7 @@
           :title="'P95 Latency (ms)'"
           :value="latency.p95[latency.p95.length-1]"
           :glow-class="'glow-purple'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -37,6 +39,7 @@
           :title="'P99 Latency (ms)'"
           :value="latency.p99[latency.p99.length-1]"
           :glow-class="'glow-orange'"
+          :theme="theme"
         />
       </a-col>
       <a-col :xs="24" :sm="12" :md="6">
@@ -45,19 +48,20 @@
           :title="'API Calls (30d)'"
           :value="apiCalls.reduce((a,b)=>a+b,0).toLocaleString()"
           :glow-class="'glow-green'"
+          :theme="theme"
         />
       </a-col>
     </a-row>
 
     <!-- Latency Percentiles Chart -->
     <div class="glass-card" style="padding: 20px; margin-bottom: 16px;">
-      <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">Latency Percentiles (ms) — Last 30 Days</div>
+      <div :class="['text-light', theme === 'light' ? 'text-light--light' : '']" style="font-weight: bold; margin-bottom: 12px;">Latency Percentiles (ms) — Last 30 Days</div>
       <Line :data="latencyChartData" :options="latencyChartOptions" />
     </div>
 
     <!-- API Call Volume Chart -->
     <div class="glass-card" style="padding: 20px;">
-      <div class="text-light" style="font-weight: bold; margin-bottom: 12px;">API Call Volume — Last 30 Days</div>
+      <div :class="['text-light', theme === 'light' ? 'text-light--light' : '']" style="font-weight: bold; margin-bottom: 12px;">API Call Volume — Last 30 Days</div>
       <Bar :data="apiCallChartData" :options="apiCallChartOptions" />
     </div>
   </div>

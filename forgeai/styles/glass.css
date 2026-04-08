@@ -95,6 +95,12 @@
   border-right: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
 }
+.glass-sidebar--light {
+  background: #f7f7fa !important;
+  color: #222;
+  border-right: 1px solid #eee;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.04);
+}
 
 /* ---------- Glass Topbar ---------- */
 .glass-topbar {
@@ -103,6 +109,12 @@
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+.glass-topbar--light {
+  background: #f7f7fa !important;
+  color: #222;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.04);
 }
 
 /* ---------- Glass Modal / Dialog ---------- */
@@ -167,6 +179,54 @@
   color: #e0e0e0 !important;
 }
 
+/* ---------- Glass Table Light Mode Overrides ---------- */
+.glass-table--light .ant-table {
+  color: #222 !important;
+}
+.glass-table--light .ant-table-thead > tr > th {
+  background: #f7f7fa !important;
+  color: #222 !important;
+  border-bottom: 1px solid #eee !important;
+}
+.glass-table--light .ant-table-tbody > tr > td {
+  color: #222 !important;
+  border-bottom: 1px solid #eee !important;
+}
+.glass-table--light .ant-table-tbody > tr:hover > td {
+  background: #ececf6 !important;
+}
+.glass-table--light .ant-table-pagination .ant-pagination-item {
+  background: #f7f7fa !important;
+  border-color: #eee !important;
+}
+.glass-table--light .ant-table-pagination .ant-pagination-item a {
+  color: #222 !important;
+}
+
+/* ---------- Glass Card Light Mode ---------- */
+.glass-card--light {
+  background: #fff !important;
+  border: 1px solid #eee !important;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.04);
+}
+
+/* ---------- Glass Input Light Mode ---------- */
+.glass-input--light .ant-input,
+.glass-input--light .ant-select-selector,
+.glass-input--light .ant-picker {
+  background: #fff !important;
+  border: 1px solid #eee !important;
+  color: #222 !important;
+}
+.glass-input--light .ant-input::placeholder {
+  color: #888 !important;
+}
+
+/* ---------- Chart.js Light Mode Utility ---------- */
+.chartjs-legend--light {
+  color: #222 !important;
+}
+
 /* ---------- Glass Tabs ---------- */
 .glass-tabs .ant-tabs-tab {
   color: rgba(255, 255, 255, 0.5) !important;
@@ -226,6 +286,21 @@
 .text-accent    { color: #ff6d00 !important; }
 .text-muted     { color: rgba(255, 255, 255, 0.45) !important; }
 .text-light     { color: rgba(255, 255, 255, 0.85) !important; }
+.text-dark      { color: #222 !important; }
+
+/* ---------- Light Mode Utility Classes ---------- */
+.text-light {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+.text-light--light {
+  color: #222 !important;
+}
+.text-muted {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+.text-muted--light {
+  color: #888 !important;
+}
 
 /* ---------- Scrollbar (Dark Glass) ---------- */
 ::-webkit-scrollbar {
